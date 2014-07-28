@@ -2,6 +2,7 @@ require './lib/task.rb'
 require './lib/list.rb'
 
 @lists = []
+@tasks = []
 # @task_list = {}
 
 def main_menu
@@ -13,7 +14,7 @@ def main_menu
     # elsif menu_choice == @lists[@i]
     #   add_new_task
     elsif menu_choice == 'l'
-      display_list
+      list_choice
     elsif menu_choice == 'x'
       puts "Good bye"
       exit
@@ -29,12 +30,19 @@ def add_new_list
   @lists << List.new(user_inputted_list)
 end
 
-def display_list
+def list_choice
   puts "Here are you list items: "
-
   @lists.each_with_index do |list, index|
     puts "#{index + 1}. #{list.name}"
   end
+  puts "Enter the list item number to manipulate"
+  @list_num = gets.chomp
+end
+
+def add_task_item
+  puts "add a task for your list item: "
+  @user_inputted_task = gets.chomp
+  @tasks << Task.new(user_inputted_task)
 end
 
 def task_menu
