@@ -17,7 +17,7 @@ describe List do
       test_task = Task.new('do this')
       test_list = List.new('stuff to do')
       test_list.add_task(test_task)
-      expect(test_list.tasks).to eq [test_task]
+      expect(test_list.tasks[0].description).to eq "do this"
     end
   end
 end
